@@ -12,6 +12,7 @@ const CoinCount: React.FC<CoinCountProps> = ({
   amount,
   roll,
   handleTotal,
+  reset
 }) => {
   const [rolls, setRolls] = useState(0);
   const [boxes, setBoxes] = useState(0);
@@ -33,6 +34,13 @@ const CoinCount: React.FC<CoinCountProps> = ({
   useEffect(() => {
     handleTotal(name, total);
   }, [total])
+
+  useEffect(() => {
+    if (reset) {
+      setRolls(0);
+      setBoxes(0);
+    }
+  }, [reset]);
 
   return (
     <div className="card bordered bg-primary m-1">

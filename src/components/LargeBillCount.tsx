@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const LargeBillCount = ({ handleTotal }) => {
+const LargeBillCount = ({ handleTotal, reset }) => {
   const [twenty, setTwenty] = useState(0);
   const [fifty, setFifty] = useState(0);
   const [hundred, setHundred] = useState(0);
@@ -11,6 +11,14 @@ const LargeBillCount = ({ handleTotal }) => {
     setTotal(sum);
     handleTotal("largeBill", sum);
   }, [twenty, fifty, hundred]);
+
+  useEffect(() => {
+    if (reset) {
+      setTwenty(0);
+      setFifty(0);
+      setHundred(0);
+    }
+  }, [reset]);
 
   return (
     <div className="card bordered bg-error m-1">

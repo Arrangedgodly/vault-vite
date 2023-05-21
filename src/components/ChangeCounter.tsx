@@ -7,12 +7,23 @@ import Footer from "./Footer";
 function ChangeCounter() {
   const [values, setValues] = useState({});
   const [total, setTotal] = useState(0);
+  const [reset, setReset] = useState(false);
 
   const handleTotal = (id: string, newValue: number) => {
     setValues((prev) => ({
       ...prev,
       [id]: newValue,
     }));
+  };
+
+  const handleReset = () => {
+    setReset(true);
+    setValues({});
+    setTotal(0);  
+  };
+
+  const handleSubmit = () => {
+    console.log(values);
   };
 
   useEffect(() => {
@@ -23,32 +34,63 @@ function ChangeCounter() {
     setTotal(sum);
   }, [values]);
 
+  useEffect(() => {
+    setReset(false);
+  }, [reset]);
+
   return (
-    <div className='mb-20 mt-3'>
+    <div className="mb-20 mt-3">
       <CoinCount
         name="Penny"
         amount={0.01}
         roll={50}
         handleTotal={handleTotal}
+        reset={reset}
       />
       <CoinCount
         name="Nickel"
         amount={0.05}
         roll={40}
         handleTotal={handleTotal}
+        reset={reset}
       />
-      <CoinCount name="Dime" amount={0.1} roll={50} handleTotal={handleTotal} />
+      <CoinCount
+        name="Dime"
+        amount={0.1}
+        roll={50}
+        handleTotal={handleTotal}
+        reset={reset}
+      />
       <CoinCount
         name="Quarter"
         amount={0.25}
         roll={40}
         handleTotal={handleTotal}
+        reset={reset}
       />
-      <BillCount name="One" amount={1} bund={100} handleTotal={handleTotal} />
-      <BillCount name="Five" amount={5} bund={100} handleTotal={handleTotal} />
-      <BillCount name="Ten" amount={10} bund={10} handleTotal={handleTotal} />
-      <LargeBillCount handleTotal={handleTotal} />
-      <Footer total={total} />
+      <BillCount
+        name="One"
+        amount={1}
+        bund={100}
+        handleTotal={handleTotal}
+        reset={reset}
+      />
+      <BillCount
+        name="Five"
+        amount={5}
+        bund={100}
+        handleTotal={handleTotal}
+        reset={reset}
+      />
+      <BillCount
+        name="Ten"
+        amount={10}
+        bund={10}
+        handleTotal={handleTotal}
+        reset={reset}
+      />
+      <LargeBillCount handleTotal={handleTotal} reset={reset} />
+      <Footer total={total} handleReset={handleReset} handleSubmit={handleSubmit} />
     </div>
   );
 }

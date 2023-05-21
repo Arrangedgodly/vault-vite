@@ -12,6 +12,7 @@ const BillCount: React.FC<BillCountProps> = ({
   amount,
   bund,
   handleTotal,
+  reset
 }) => {
   const [singles, setSingles] = useState(0);
   const [bundle, setBundle] = useState(0);
@@ -30,6 +31,13 @@ const BillCount: React.FC<BillCountProps> = ({
       setBundle(0);
     }
   }, [singles, bundle]);
+
+  useEffect(() => {
+    if (reset) {
+      setSingles(0);
+      setBundle(0);
+    }
+  }, [reset]);
 
   return (
     <div className="card bordered bg-success m-1">
