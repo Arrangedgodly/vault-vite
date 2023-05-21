@@ -1,34 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import Header from './components/Header'
+import CoinCount from './components/CoinCount'
+import BillCount from './components/BillCount'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [total, setTotal] = useState(0)
+
+  const handleTotal = (amount) => {
+    setTotal(total + amount)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='flex flex-col items-center min-h-screen p-0'>
+      <Header />
+      <CoinCount 
+        name='Penny'
+        amount={.01}
+        roll={50}
+        handleTotal={handleTotal}
+      />
+      <CoinCount
+        name='Nickel'
+        amount={.05}
+        roll={40}
+        handleTotal={handleTotal}
+      />
+      <CoinCount
+        name='Dime'
+        amount={.1}
+        roll={50}
+        handleTotal={handleTotal}
+      />
+      <CoinCount
+        name='Quarter'
+        amount={.25}
+        roll={40}
+        handleTotal={handleTotal}
+      />
+      <BillCount
+        name='One'
+        amount={1}
+        bund={100}
+        handleTotal={handleTotal}
+      />
+      <BillCount
+        name='Five'
+        amount={5}
+        bund={100}
+        handleTotal={handleTotal}
+      />
+      <BillCount
+        name='Ten'
+        amount={10}
+        bund={10}
+        handleTotal={handleTotal}
+      />
+    </div>
   )
 }
 
