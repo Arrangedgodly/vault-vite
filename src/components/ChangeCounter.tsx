@@ -50,9 +50,9 @@ function ChangeCounter() {
 
   useEffect(() => {
     let sum = 0;
-    for (const key in values) {
+    Object.keys(values).forEach((key) => {
       sum += values[key];
-    }
+    });
     setTotal(sum);
   }, [values]);
 
@@ -61,7 +61,7 @@ function ChangeCounter() {
   }, [reset]);
 
   return (
-    <div className="mb-20 mt-3">
+    <div className="mb-20 mt-3 relative z-0">
       <CoinCount
         name="Penny"
         amount={0.01}

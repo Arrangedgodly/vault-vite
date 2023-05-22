@@ -36,6 +36,7 @@ const BillCount: React.FC<BillCountProps> = ({
   useEffect(() => {
       setSingles(0);
       setBundle(0);
+      setTotal(0);
   }, [reset]);
 
   return (
