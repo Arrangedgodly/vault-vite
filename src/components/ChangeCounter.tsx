@@ -4,8 +4,21 @@ import BillCount from "./BillCount";
 import LargeBillCount from "./LargeBillCount";
 import Footer from "./Footer";
 
+interface Values {
+  [key: string]: number;
+}
+
 function ChangeCounter() {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState<Values>({
+    "Penny": 0,
+    "Nickel": 0,
+    "Dime": 0,
+    "Quarter": 0,
+    "One": 0,
+    "Five": 0,
+    "Ten": 0,
+    "largeBill": 0
+  });
   const [total, setTotal] = useState(0);
   const [reset, setReset] = useState(false);
 
@@ -18,7 +31,16 @@ function ChangeCounter() {
 
   const handleReset = () => {
     setReset(true);
-    setValues({});
+    setValues({
+      "Penny": 0,
+      "Nickel": 0,
+      "Dime": 0,
+      "Quarter": 0,
+      "One": 0,
+      "Five": 0,
+      "Ten": 0,
+      "largeBill": 0
+    });
     setTotal(0);  
   };
 

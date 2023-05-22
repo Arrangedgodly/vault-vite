@@ -1,4 +1,10 @@
-function Footer({ total, handleReset, handleSubmit }) {
+interface FooterProps {
+  total: number;
+  handleReset: () => void;
+  handleSubmit: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ total, handleReset, handleSubmit }) => {
   return (
     <footer className="footer footer-center p-5 bg-base-200 text-base-content rounded fixed bottom-0 left-0">
       <div className="grid grid-flow-col gap-5 w-[75%] m-auto">

@@ -4,7 +4,8 @@ interface CoinCountProps {
   name: string;
   amount: number;
   roll: number;
-  handleTotal: () => void;
+  handleTotal: (arg0: string, arg1: number) => void;
+  reset: boolean;
 }
 
 const CoinCount: React.FC<CoinCountProps> = ({
@@ -36,10 +37,8 @@ const CoinCount: React.FC<CoinCountProps> = ({
   }, [total])
 
   useEffect(() => {
-    if (reset) {
       setRolls(0);
       setBoxes(0);
-    }
   }, [reset]);
 
   return (

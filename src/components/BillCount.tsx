@@ -4,7 +4,8 @@ interface BillCountProps {
   name: string;
   amount: number;
   bund: number;
-  handleTotal: () => void;
+  handleTotal: (arg0: string, arg1: number) => void;
+  reset: boolean;
 }
 
 const BillCount: React.FC<BillCountProps> = ({
@@ -33,10 +34,8 @@ const BillCount: React.FC<BillCountProps> = ({
   }, [singles, bundle]);
 
   useEffect(() => {
-    if (reset) {
       setSingles(0);
       setBundle(0);
-    }
   }, [reset]);
 
   return (
