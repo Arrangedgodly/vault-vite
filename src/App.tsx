@@ -11,7 +11,7 @@ import { signInWithPopup, signOut } from 'firebase/auth'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<any>(localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null)
   const [err, setErr] = useState<any>(null)
 
   const navigate = useNavigate()
@@ -21,6 +21,7 @@ function App() {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
         setLoggedIn(true);
         navigate('/')
       })
@@ -36,11 +37,18 @@ function App() {
     signOut(auth).then(() => {
       setLoggedIn(false)
       setUser(null)
+      localStorage.removeItem('user')
     }).catch((error) => {
       console.log(error)
     }
     )
   }
+
+  useEffect(() => {
+    if (user) {
+      setLoggedIn(true)
+    }
+  }, [user])
 
   return (
     <div className="flex flex-col items-center min-h-screen p-0">
