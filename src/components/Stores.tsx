@@ -8,7 +8,7 @@ interface StoresProps {
   user: any;
 }
 
-const Stores: React.FC<StoresProps> = ({ loggedIn, user }) => {
+const Stores = ({ loggedIn, user }: StoresProps) => {
   const navigate = useNavigate();
   const [stores, setStores] = useState<any>({});
 
@@ -23,10 +23,10 @@ const Stores: React.FC<StoresProps> = ({ loggedIn, user }) => {
   };
 
   useEffect(() => {
-    if (!loggedIn) {
+    if (!user) {
       navigate("/login");
     }
-  }, [loggedIn]);
+  }, [user]);
 
   useEffect(() => {
     storeSnapshot();

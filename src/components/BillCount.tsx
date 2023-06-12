@@ -8,13 +8,13 @@ interface BillCountProps {
   reset: boolean;
 }
 
-const BillCount: React.FC<BillCountProps> = ({
+const BillCount = ({
   name,
   amount,
   bund,
   handleTotal,
   reset
-}) => {
+}: BillCountProps) => {
   const [singles, setSingles] = useState(0);
   const [bundle, setBundle] = useState(0);
   const [total, setTotal] = useState(0);

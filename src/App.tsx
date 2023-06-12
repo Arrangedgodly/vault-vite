@@ -55,7 +55,7 @@ function App() {
       <Header loggedIn={loggedIn} user={user} handleLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<ChangeCounter />} />
-        <Route path="/login" element={<Login handleLogin={handleLogin} err={err} setErr={setErr} />} />
+        <Route path="/login" element={<Login handleLogin={handleLogin} err={err} />} />
         <Route
           path="/stores"
           element={<Stores loggedIn={loggedIn} user={user} />}

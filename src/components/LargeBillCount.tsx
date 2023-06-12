@@ -5,7 +5,7 @@ interface LargeBillCountProps {
   reset: boolean;
 }
 
-const LargeBillCount: React.FC<LargeBillCountProps> = ({ handleTotal, reset }) => {
+const LargeBillCount = ({ handleTotal, reset }: LargeBillCountProps) => {
   const [twenty, setTwenty] = useState(0);
   const [fifty, setFifty] = useState(0);
   const [hundred, setHundred] = useState(0);

@@ -4,7 +4,7 @@ interface FooterProps {
   handleSubmit: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ total, handleReset, handleSubmit }) => {
+const Footer = ({ total, handleReset, handleSubmit }: FooterProps) => {
   return (
     <footer className="footer footer-center p-5 bg-base-200 text-base-content rounded fixed bottom-0 left-0">
       <div className="grid grid-flow-col gap-5 w-[75%] m-auto">

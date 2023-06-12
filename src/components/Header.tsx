@@ -8,7 +8,7 @@ interface HeaderProps {
   handleLogout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ loggedIn, user, handleLogout }) => {
+const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (

@@ -1,16 +1,9 @@
-import { useEffect } from "react";
-
 interface LoginProps {
   handleLogin: () => void;
   err: any;
-  setErr: any;
 }
 
-const Login: React.FC<LoginProps> = ({ handleLogin, err, setErr }) => {
-  useEffect(() => {
-    setErr(null);
-  }, []);
-
+const Login = ({ handleLogin, err }: LoginProps) => {
   return (
     <div className="flex flex-col items-center">
       <div className="card p-4 shadow-2xl">

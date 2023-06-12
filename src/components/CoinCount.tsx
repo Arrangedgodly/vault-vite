@@ -8,13 +8,13 @@ interface CoinCountProps {
   reset: boolean;
 }
 
-const CoinCount: React.FC<CoinCountProps> = ({
+const CoinCount = ({
   name,
   amount,
   roll,
   handleTotal,
   reset
-}) => {
+}: CoinCountProps) => {
   const [rolls, setRolls] = useState(0);
   const [boxes, setBoxes] = useState(0);
   const [total, setTotal] = useState(0);
