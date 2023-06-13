@@ -6,15 +6,32 @@ interface UserProps {
   user: any;
 }
 
-const User: React.FC<UserProps> = ({loggedIn, user}) => {
+const User = ({ loggedIn, user }: UserProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!loggedIn) {
+    if (!user) {
       navigate("/login");
     }
-  }, [loggedIn]);
-  return <div className="flex flex-col items-center"></div>;
+  }, [user]);
+
+  return (
+    <div className="center-col m-5">
+      {user && (
+        <>
+          <h2 className="bold-2x">{user.displayName}</h2>
+          <img
+            className="rounded-full m-2"
+            src={user.photoURL}
+            alt={`Avatar for ${user.displayName}`}
+          />
+          <p className="text-center">
+            {user.email}
+          </p>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default User;

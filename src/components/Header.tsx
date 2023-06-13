@@ -12,7 +12,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="navbar bg-base-100 drop-shadow-md relative z-30">
+    <div className="navbar bg-base-100 drop-shadow-md fixed z-30">
       <div className="navbar-start">
         <div className="dropdown dropdown-hover">
           <label tabIndex={0} className="btn btn-square btn-ghost">
@@ -34,7 +34,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
             tabIndex={0}
             className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 relative z-40"
           >
-            <li className="flex items-center">
+            <li className="center-row">
               <a
                 onClick={() => {
                   navigate("/");
@@ -43,7 +43,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
                 Vault Counter
               </a>
             </li>
-            <li className="flex items-center">
+            <li className="center-row">
               <a
                 onClick={() => {
                   navigate("/deposit");
@@ -52,7 +52,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
                 Deposit Counter
               </a>
             </li>
-            <li className="flex items-center">
+            <li className="center-row">
               <a
                 onClick={() => {
                   navigate("/stores");
@@ -90,7 +90,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
         >
           {loggedIn ? (
             <>
-            <li className="flex items-center">
+            <li className="row-end">
               <a
                 onClick={() => {
                   navigate("/my-account");
@@ -99,7 +99,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
                 My Account
               </a>
             </li>
-            <li className="flex items-center">
+            <li className="row-end">
               <a
                 onClick={handleLogout}
               >
@@ -108,7 +108,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
             </li>
             </>
           ) : (
-            <li className="flex items-center">
+            <li className="row-end">
               <a
                 onClick={() => {
                   navigate("/login");

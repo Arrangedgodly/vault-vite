@@ -24,9 +24,9 @@ const LargeBillCount = ({ handleTotal, reset }: LargeBillCountProps) => {
   }, [reset]);
 
   return (
-    <div className="card bordered bg-error m-1">
+    <div className="card bordered bg-error m-1 mb-5">
       <div className="card-body grid grid-cols-3 items-center justify-items-center">
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-error-content">Twenty Bills</h2>
           <input
             type="number"
@@ -35,7 +35,7 @@ const LargeBillCount = ({ handleTotal, reset }: LargeBillCountProps) => {
             onChange={(e) => setTwenty(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-error-content">Fifty Bills</h2>
           <input
             type="number"
@@ -44,7 +44,7 @@ const LargeBillCount = ({ handleTotal, reset }: LargeBillCountProps) => {
             onChange={(e) => setFifty(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-error-content">Hundred Bills</h2>
           <input
             type="number"
@@ -54,7 +54,7 @@ const LargeBillCount = ({ handleTotal, reset }: LargeBillCountProps) => {
           />
         </div>
         <div></div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-error-content">Total</h2>
           <p className="text-2xl text-center text-error-content">${total}</p>
         </div>

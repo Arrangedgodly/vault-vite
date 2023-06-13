@@ -1,0 +1,23 @@
+.center-col {
+  @apply flex flex-col items-center;
+}
+
+.center-row {
+  @apply flex flex-row items-center;
+}
+
+.bold-2x {
+  @apply text-2xl font-bold m-2;
+}
+
+.bold-xl {
+  @apply text-xl font-bold m-2;
+}
+
+.row-start {
+  @apply flex flex-row items-start;
+}
+
+.row-end {
+  @apply flex flex-row items-end ml-auto;
+}

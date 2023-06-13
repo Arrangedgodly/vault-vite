@@ -61,7 +61,7 @@ function ChangeCounter() {
   }, [reset]);
 
   return (
-    <div className="mb-20 mt-3 relative z-0">
+    <div className="my-20 relative z-0">
       <CoinCount
         name="Penny"
         amount={0.01}

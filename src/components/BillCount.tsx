@@ -42,7 +42,7 @@ const BillCount = ({
   return (
     <div className="card bordered bg-success m-1">
       <div className="card-body grid grid-cols-3 justify-items-center">
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-success-content">{name} Bills</h2>
           <input
             type="number"
@@ -51,7 +51,7 @@ const BillCount = ({
             onChange={(e) => setSingles(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-success-content">{name} Bundles</h2>
           <input
             type="number"
@@ -60,7 +60,7 @@ const BillCount = ({
             onChange={(e) => setBundle(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-success-content">Total</h2>
           <p className="text-2xl text-center text-success-content">${total}</p>
         </div>

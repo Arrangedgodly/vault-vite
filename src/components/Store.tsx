@@ -40,11 +40,11 @@ const Store = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="center-col">
       <h2 className="text-2xl font-bold m-2">{store}</h2>
       {vaultRef && (
-        <div className="flex flex-col items-center">
-          <h3 className="text-xl font-bold m-2">Vault</h3>
+        <div className="center-col">
+          <h3 className="bold-xl">Vault</h3>
           <div className="menu menu-primary text-center gap-2">
             {vaultRef.map((item: any) => (
               <li key={item.id}>
@@ -59,9 +59,15 @@ const Store = () => {
           </div>
         </div>
       )}
+      {vaultErr && (
+        <div className="center-col">
+          <h3 className="bold-xl">Vault</h3>
+          <p className="bold-xl">{vaultErr}</p>
+        </div>
+      )}
       {eodRef && (
-        <div className="flex flex-col items-center">
-          <h3 className="text-xl font-bold m-2">EOD</h3>
+        <div className="center-col">
+          <h3 className="bold-xl">EOD</h3>
           <div className="menu menu-primary text-center gap-2">
             {eodRef.map((item: any) => (
               <li key={item.id}>
@@ -76,9 +82,15 @@ const Store = () => {
           </div>
         </div>
       )}
+      {eodErr && (
+        <div className="center-col">
+          <h3 className="bold-xl">EOD</h3>
+          <p className="bold-xl">{eodErr}</p>
+        </div>
+      )}
       <div className="flex flex-row items-center">
         <input type="checkbox" />
-        <p className="text-xl font-bold m-2">My Primary Store</p>
+        <p className="bold-xl">My Primary Store</p>
       </div>
       <button
         className="btn btn-lg btn-outline rounded-box"

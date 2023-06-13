@@ -44,7 +44,7 @@ const CoinCount = ({
   return (
     <div className="card bordered bg-primary m-1">
       <div className="card-body grid grid-cols-3 items-center justify-items-center">
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-primary-content">{name} Rolls</h2>
           <input
             type="number"
@@ -53,7 +53,7 @@ const CoinCount = ({
             onChange={(e) => setRolls(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-primary-content">{name} Boxes</h2>
           <input
             type="number"
@@ -62,7 +62,7 @@ const CoinCount = ({
             onChange={(e) => setBoxes(Number(e.target.value))}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="center-col">
           <h2 className="card-title text-primary-content">Total</h2>
           <p className="text-2xl text-center text-primary-content">${total}</p>
         </div>

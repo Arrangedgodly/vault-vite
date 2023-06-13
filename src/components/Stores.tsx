@@ -33,7 +33,7 @@ const Stores = ({ loggedIn, user }: StoresProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="center-col">
       <h2 className="text-2xl font-bold m-2">Stores</h2>
       <div className="menu menu-primary text-center gap-2">
         {Object.keys(stores).map((store) => (
