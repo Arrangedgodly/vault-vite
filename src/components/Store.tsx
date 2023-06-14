@@ -1,7 +1,7 @@
 import { useStoreLogic } from "../logic/useStoreLogic";
 
 const Store = () => {
-  const { store, vaultRef, eodRef, vaultErr, eodErr, navigate } =
+  const { store, vaultRef, eodRef, userBoolean, toggleUser, vaultErr, eodErr, navigate } =
     useStoreLogic();
 
   return (
@@ -54,7 +54,10 @@ const Store = () => {
         </div>
       )}
       <div className="flex flex-row items-center">
-        <input type="checkbox" />
+        <input type="checkbox" 
+          checked={userBoolean}
+          onChange={() => toggleUser()}
+        />
         <p className="bold-xl">My Primary Store</p>
       </div>
       <button

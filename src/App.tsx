@@ -26,7 +26,7 @@ function App() {
         />
         <Route
           path="/my-account"
-          element={<User loggedIn={loggedIn} user={user} />}
+          element={<User user={user} />}
         />
       </Routes>
     </div>

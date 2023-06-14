@@ -20,6 +20,7 @@ export const useAppLogic = () => {
         const user = result.user;
         setUser(user);
         localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem('uid', user.uid);
         setLoggedIn(true);
         navigate("/");
       })
@@ -37,6 +38,7 @@ export const useAppLogic = () => {
         setLoggedIn(false);
         setUser(null);
         localStorage.removeItem("user");
+        localStorage.removeItem("uid");
       })
       .catch((error) => {
         console.log(error);

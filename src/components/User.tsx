@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 interface UserProps {
-  loggedIn: boolean;
   user: any;
 }
 
-const User = ({ loggedIn, user }: UserProps) => {
+const User = ({ user }: UserProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
