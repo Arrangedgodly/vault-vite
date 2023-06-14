@@ -12,7 +12,7 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="navbar bg-base-100 drop-shadow-md fixed z-30">
+    <div className="navbar bg-base-100 drop-shadow-md relative z-30">
       <div className="navbar-start">
         <div className="dropdown dropdown-hover">
           <label tabIndex={0} className="btn btn-square btn-ghost">

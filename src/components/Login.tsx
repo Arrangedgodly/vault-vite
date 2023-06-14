@@ -6,7 +6,7 @@ interface LoginProps {
 const Login = ({ handleLogin, err }: LoginProps) => {
   return (
     <div className="center-col m-20">
-      <div className="card p-4 shadow-2xl">
+      <div className="card bg-accent text-accent-content p-4 shadow-2xl">
         <h2 className="text-2xl font-bold card-title">Login</h2>
         <div className="card-body card-center text-center">
           <p className="card-text">

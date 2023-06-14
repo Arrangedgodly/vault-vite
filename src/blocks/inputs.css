@@ -1,0 +1,11 @@
+.input-main {
+  @apply input input-bordered text-center bg-primary-content text-primary w-20;
+}
+
+.input-bill {
+  @apply input input-bordered text-center bg-success-content text-success w-20;
+}
+
+.input-large {
+  @apply input input-bordered text-center bg-error-content text-error w-20;
+}

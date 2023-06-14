@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useCoinCountLogic } from "../logic/useCoinCountLogic";
 
 interface CoinCountProps {
   name: string;
@@ -13,57 +13,39 @@ const CoinCount = ({
   amount,
   roll,
   handleTotal,
-  reset
+  reset,
 }: CoinCountProps) => {
-  const [rolls, setRolls] = useState(0);
-  const [boxes, setBoxes] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  useEffect(() => {
-    setTotal(rolls * roll * amount + boxes * roll * amount * 50);
-  }, [rolls, boxes]);
-
-  useEffect(() => {
-    if (rolls < 0) {
-      setRolls(0);
-    }
-    if (boxes < 0) {
-      setBoxes(0);
-    }
-  }, [rolls, boxes]);
-
-  useEffect(() => {
-    handleTotal(name, total);
-  }, [total])
-
-  useEffect(() => {
-      setRolls(0);
-      setBoxes(0);
-  }, [reset]);
+  const { rolls, setRolls, boxes, setBoxes, total } = useCoinCountLogic({
+    name,
+    roll,
+    amount,
+    handleTotal,
+    reset,
+  });
 
   return (
     <div className="card bordered bg-primary m-1">
       <div className="card-body grid grid-cols-3 items-center justify-items-center">
         <div className="center-col">
-          <h2 className="card-title text-primary-content">{name} Rolls</h2>
+          <h2 className="card-title norm-head">{name} Rolls</h2>
           <input
             type="number"
-            className="input input-bordered text-center bg-primary-content text-primary w-20"
+            className="input-main"
             value={rolls}
             onChange={(e) => setRolls(Number(e.target.value))}
           />
         </div>
         <div className="center-col">
-          <h2 className="card-title text-primary-content">{name} Boxes</h2>
+          <h2 className="card-title norm-head">{name} Boxes</h2>
           <input
             type="number"
-            className="input input-bordered text-center bg-primary-content text-primary w-20"
+            className="input-main"
             value={boxes}
             onChange={(e) => setBoxes(Number(e.target.value))}
           />
         </div>
         <div className="center-col">
-          <h2 className="card-title text-primary-content">Total</h2>
+          <h2 className="card-title norm-head">Total</h2>
           <p className="text-2xl text-center text-primary-content">${total}</p>
         </div>
       </div>

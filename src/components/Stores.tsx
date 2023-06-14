@@ -1,36 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { useEffect } from "react";
+import { useStoresLogic } from "../logic/useStoresLogic";
 
 interface StoresProps {
-  loggedIn: boolean;
   user: any;
 }
 
-const Stores = ({ loggedIn, user }: StoresProps) => {
+const Stores = ({ user }: StoresProps) => {
+  const { stores } = useStoresLogic();
   const navigate = useNavigate();
-  const [stores, setStores] = useState<any>({});
-
-  const storeSnapshot = async () => {
-    const storesCol = collection(db, "stores");
-    const storeSnapshot = await getDocs(storesCol);
-    let stores: any = {};
-    storeSnapshot.forEach((doc) => {
-      stores[doc.id] = doc.data();
-    });
-    setStores(stores);
-  };
 
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
   }, [user]);
-
-  useEffect(() => {
-    storeSnapshot();
-  }, []);
 
   return (
     <div className="center-col">

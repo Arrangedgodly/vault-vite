@@ -1,4 +1,6 @@
-@import url('./styles.css');
+@import url('./blocks/styles.css');
+@import url('./blocks/typography.css');
+@import url('./blocks/inputs.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

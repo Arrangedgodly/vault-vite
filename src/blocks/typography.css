@@ -1,0 +1,23 @@
+.bold-2x {
+  @apply text-2xl font-bold m-2;
+}
+
+.bold-xl {
+  @apply text-xl font-bold m-2;
+}
+
+.norm-lg {
+  @apply text-lg m-2;
+}
+
+.norm-head {
+  @apply norm-lg font-bold text-primary-content;
+}
+
+.norm-bill {
+  @apply norm-lg font-bold text-success-content;
+}
+
+.norm-large {
+  @apply norm-lg font-bold text-error-content;
+}

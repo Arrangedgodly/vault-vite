@@ -1,67 +1,15 @@
-import { useState, useEffect } from "react";
+import { useChangeCounterLogic } from "../logic/useChangeCounterLogic";
 import CoinCount from "./CoinCount";
 import BillCount from "./BillCount";
 import LargeBillCount from "./LargeBillCount";
 import Footer from "./Footer";
 
-interface Values {
-  [key: string]: number;
-}
 
 function ChangeCounter() {
-  const [values, setValues] = useState<Values>({
-    "Penny": 0,
-    "Nickel": 0,
-    "Dime": 0,
-    "Quarter": 0,
-    "One": 0,
-    "Five": 0,
-    "Ten": 0,
-    "largeBill": 0
-  });
-  const [total, setTotal] = useState(0);
-  const [reset, setReset] = useState(false);
-
-  const handleTotal = (id: string, newValue: number) => {
-    setValues((prev) => ({
-      ...prev,
-      [id]: newValue,
-    }));
-  };
-
-  const handleReset = () => {
-    setReset(true);
-    setValues({
-      "Penny": 0,
-      "Nickel": 0,
-      "Dime": 0,
-      "Quarter": 0,
-      "One": 0,
-      "Five": 0,
-      "Ten": 0,
-      "largeBill": 0
-    });
-    setTotal(0);  
-  };
-
-  const handleSubmit = () => {
-    console.log(values);
-  };
-
-  useEffect(() => {
-    let sum = 0;
-    Object.keys(values).forEach((key) => {
-      sum += values[key];
-    });
-    setTotal(sum);
-  }, [values]);
-
-  useEffect(() => {
-    setReset(false);
-  }, [reset]);
+  const { total, handleTotal, handleReset, handleSubmit, reset } = useChangeCounterLogic();
 
   return (
-    <div className="my-20 relative z-0">
+    <div className="mt-5 mb-20 relative z-0">
       <CoinCount
         name="Penny"
         amount={0.01}

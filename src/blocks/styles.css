@@ -1,17 +1,9 @@
 .center-col {
-  @apply flex flex-col items-center;
+  @apply flex flex-col flex-grow items-center w-full m-5;
 }
 
 .center-row {
   @apply flex flex-row items-center;
-}
-
-.bold-2x {
-  @apply text-2xl font-bold m-2;
-}
-
-.bold-xl {
-  @apply text-xl font-bold m-2;
 }
 
 .row-start {
