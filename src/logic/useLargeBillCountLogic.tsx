@@ -23,5 +23,17 @@ export const useLargeBillCountLogic = ({ handleTotal, reset }: LargeBillCountPro
     setHundred(0);
   }, [reset]);
 
+  useEffect(() => {
+    if (twenty < 0) setTwenty(0);
+  }, [twenty]);
+
+  useEffect(() => {
+    if (fifty < 0) setFifty(0);
+  }, [fifty]);
+
+  useEffect(() => {
+    if (hundred < 0) setHundred(0);
+  }, [hundred]);
+
   return { twenty, fifty, hundred, total, setTwenty, setFifty, setHundred }
 }

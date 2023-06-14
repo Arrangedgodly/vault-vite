@@ -20,18 +20,22 @@ export const useBillCountLogic = ({
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(singles * amount + bundle * amount * bund);
-    handleTotal(name, total);
+    const sum = singles * amount + bundle * amount * bund;
+    setTotal(sum);
+    handleTotal(name, sum);
   }, [singles, bundle]);
 
   useEffect(() => {
     if (singles < 0) {
       setSingles(0);
     }
+  }, [singles]);
+
+  useEffect(() => {
     if (bundle < 0) {
       setBundle(0);
     }
-  }, [singles, bundle]);
+  }, [bundle]);
 
   useEffect(() => {
     setSingles(0);
