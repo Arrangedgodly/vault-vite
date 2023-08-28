@@ -1,7 +1,7 @@
 import { useStoreLogic } from "../logic/useStoreLogic";
 
 const Store = () => {
-  const { store, vaultRef, eodRef, userBoolean, toggleUser, vaultErr, eodErr, navigate } =
+  const { store, vaultRef, userBoolean, toggleUser, vaultErr, navigate } =
     useStoreLogic();
 
   return (
@@ -28,29 +28,6 @@ const Store = () => {
         <div className="center-col">
           <h3 className="bold-xl">Vault</h3>
           <p className="bold-xl">{vaultErr}</p>
-        </div>
-      )}
-      {eodRef && (
-        <div className="center-col">
-          <h3 className="bold-xl">EOD</h3>
-          <div className="menu menu-primary text-center gap-2">
-            {eodRef.map((item: any) => (
-              <li key={item.id}>
-                <button
-                  className="btn btn-lg btn-outline rounded-box"
-                  onClick={() => navigate(`/stores/${store}/eod/${item.id}`)}
-                >
-                  {item.id}
-                </button>
-              </li>
-            ))}
-          </div>
-        </div>
-      )}
-      {eodErr && (
-        <div className="center-col">
-          <h3 className="bold-xl">EOD</h3>
-          <p className="bold-xl">{eodErr}</p>
         </div>
       )}
       <div className="flex flex-row items-center">

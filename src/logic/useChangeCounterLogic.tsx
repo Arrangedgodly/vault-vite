@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { collection, setDoc } from "firebase/firestore";
 
 interface Values {
   [key: string]: number;
@@ -56,5 +57,5 @@ export const useChangeCounterLogic = () => {
     setReset(false);
   }, [reset]);
 
-  return { total, handleTotal, handleReset, handleSubmit, reset }
+  return { total, handleTotal, handleReset, handleSubmit, reset };
 };

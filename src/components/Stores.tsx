@@ -7,12 +7,18 @@ interface StoresProps {
 }
 
 const Stores = ({ user }: StoresProps) => {
-  const { stores } = useStoresLogic();
+  const { stores, userStore } = useStoresLogic({ user });
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
       navigate("/login");
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (userStore) {
+      navigate(`/stores/${userStore}`);
     }
   }, [user]);
 

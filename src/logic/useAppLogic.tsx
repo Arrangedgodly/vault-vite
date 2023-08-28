@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, provider } from "../firebase";
+import { auth, provider, db } from "../firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
+import {
+  collection,
+  doc,
+  setDoc,
+} from "firebase/firestore";
 
 export const useAppLogic = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -13,6 +18,17 @@ export const useAppLogic = () => {
   const [err, setErr] = useState<any>(null);
 
   const navigate = useNavigate();
+  const usersCol = collection(db, "users");
+
+  const handleCreateUser = async (user: any) => {
+    const userDocRef = doc(usersCol, user.uid);
+    await setDoc(userDocRef, {
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      uid: user.uid,
+    });
+  };
 
   const handleLogin = () => {
     signInWithPopup(auth, provider)
@@ -20,7 +36,7 @@ export const useAppLogic = () => {
         const user = result.user;
         setUser(user);
         localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem('uid', user.uid);
+        localStorage.setItem("uid", user.uid);
         setLoggedIn(true);
         navigate("/");
       })
@@ -51,5 +67,11 @@ export const useAppLogic = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      handleCreateUser(user);
+    }
+  }, [user]);
+
   return { loggedIn, user, err, handleLogin, handleLogout };
-}
+};

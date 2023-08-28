@@ -46,15 +46,6 @@ const Header = ({ loggedIn, user, handleLogout }: HeaderProps) => {
             <li className="center-row">
               <a
                 onClick={() => {
-                  navigate("/deposit");
-                }}
-              >
-                Deposit Counter
-              </a>
-            </li>
-            <li className="center-row">
-              <a
-                onClick={() => {
                   navigate("/stores");
                 }}
               >
