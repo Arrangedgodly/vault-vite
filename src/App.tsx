@@ -14,7 +14,7 @@ function App() {
     <div className="flex flex-col items-center min-h-screen p-0">
       <Header loggedIn={loggedIn} user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<ChangeCounter />} />
+        <Route path="/" element={<ChangeCounter user={user} />} />
         <Route path="/login" element={<Login handleLogin={handleLogin} err={err} />} />
         <Route
           path="/stores"

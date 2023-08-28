@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { collection, setDoc } from "firebase/firestore";
 
+interface ChangeCounterLogicProps {
+  user: any;
+}
+
 interface Values {
   [key: string]: number;
 }
 
-export const useChangeCounterLogic = () => {
+export const useChangeCounterLogic = ({ user }: ChangeCounterLogicProps) => {
   const [values, setValues] = useState<Values>({
     Penny: 0,
     Nickel: 0,

@@ -4,9 +4,12 @@ import BillCount from "./BillCount";
 import LargeBillCount from "./LargeBillCount";
 import Footer from "./Footer";
 
+interface ChangeCounterProps {
+  user: any;
+}
 
-function ChangeCounter() {
-  const { total, handleTotal, handleReset, handleSubmit, reset } = useChangeCounterLogic();
+function ChangeCounter({ user }: ChangeCounterProps) {
+  const { total, handleTotal, handleReset, handleSubmit, reset } = useChangeCounterLogic({ user });
 
   return (
     <div className="mt-5 mb-20 relative z-0">
