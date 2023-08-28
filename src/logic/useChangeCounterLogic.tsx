@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { collection, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { collection, setDoc, Timestamp, doc } from "firebase/firestore";
 
 interface ChangeCounterLogicProps {
   user: any;
@@ -46,7 +47,23 @@ export const useChangeCounterLogic = ({ user }: ChangeCounterLogicProps) => {
   };
 
   const handleSubmit = () => {
-    console.log(values);
+    if (!user || !user.store) {
+      return false;
+    }
+  
+    const date = Timestamp.fromDate(new Date()).toMillis().toString();
+    const userVaultRef = collection(db, `stores/${user.store}/vault`);
+    
+    setDoc(doc(userVaultRef, date), values)
+      .then(() => {
+        console.log("Document successfully written!");
+        handleReset();
+        return true;
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+        return false;
+      });
   };
 
   useEffect(() => {
