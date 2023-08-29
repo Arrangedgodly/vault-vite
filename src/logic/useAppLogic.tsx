@@ -6,6 +6,7 @@ import {
   collection,
   doc,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 
 export const useAppLogic = () => {
@@ -16,6 +17,7 @@ export const useAppLogic = () => {
       : null
   );
   const [err, setErr] = useState<any>(null);
+  const [primaryStore, setPrimaryStore] = useState<any>(null);
 
   const navigate = useNavigate();
   const usersCol = collection(db, "users");
@@ -27,6 +29,7 @@ export const useAppLogic = () => {
       displayName: user.displayName,
       photoURL: user.photoURL,
       uid: user.uid,
+      store: ""
     });
   };
 
@@ -61,6 +64,19 @@ export const useAppLogic = () => {
       });
   };
 
+  const checkUserStore = async () => {
+    if (!user) return;
+    const userDocRef = doc(usersCol, user.uid);
+    const userDocSnap = await getDoc(userDocRef);
+    if (userDocSnap.exists()) {
+      const userData = userDocSnap.data();
+      console.log(userData);
+      if (userData.store) {
+        setPrimaryStore(userData.store);
+      }
+    }
+  };
+
   useEffect(() => {
     if (user) {
       setLoggedIn(true);
@@ -73,5 +89,9 @@ export const useAppLogic = () => {
     }
   }, [user]);
 
-  return { loggedIn, user, err, handleLogin, handleLogout };
+  useEffect(() => {
+    checkUserStore();
+  }, [user]);
+
+  return { loggedIn, user, err, handleLogin, handleLogout, primaryStore };
 };

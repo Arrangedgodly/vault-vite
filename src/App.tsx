@@ -8,7 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import { useAppLogic } from './logic/useAppLogic'
 
 function App() {
-  const { loggedIn, user, err, handleLogin, handleLogout } = useAppLogic();
+  const { loggedIn, user, err, handleLogin, handleLogout, primaryStore } = useAppLogic();
 
   return (
     <div className="flex flex-col items-center min-h-screen p-0">

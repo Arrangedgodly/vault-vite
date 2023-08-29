@@ -52,15 +52,15 @@ export const useChangeCounterLogic = ({ user }: ChangeCounterLogicProps) => {
     }
   
     const date = Timestamp.fromDate(new Date()).toMillis().toString();
-    const userVaultRef = collection(db, `stores/${user.store}/vault`);
+    const userVaultRef = collection(db, `stores/${user.store}/vault/${date}`);
     
-    setDoc(doc(userVaultRef, date), values)
+    setDoc(doc(userVaultRef), values)
       .then(() => {
         console.log("Document successfully written!");
         handleReset();
         return true;
       })
-      .catch((error) => {
+      .catch((error) => { 
         console.error("Error writing document: ", error);
         return false;
       });

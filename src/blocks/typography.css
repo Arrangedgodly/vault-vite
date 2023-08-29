@@ -7,7 +7,7 @@
 }
 
 .norm-lg {
-  @apply text-lg m-2;
+  @apply text-sm md:text-lg m-2;
 }
 
 .norm-head {
